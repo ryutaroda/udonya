@@ -20,17 +20,20 @@
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8  md:grid md:grid-cols-9 md:gap-6">
+                    <div class="md:col-span-2">
+                        @include('layouts.sampleMenuSidebar')
+                    </div>
+                    <div class="md:col-span-7">
+                        {{ $slot }}
+                    </div>
+                </div>
             </main>
         </div>
+        <script src="https://unpkg.com/flowbite@1.4.3/dist/flowbite.js"></script>
     </body>
 </html>
