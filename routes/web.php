@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SampleController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,7 @@ use App\Http\Controllers\SampleController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 
@@ -32,6 +34,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sample/avatar', [SampleController::class, 'avatar'])->name('sample.avatar');
     Route::get('/sample/badge', [SampleController::class, 'badge'])->name('sample.badge');
     Route::get('/sample/breadcrumb', [SampleController::class, 'breadcrumb'])->name('sample.breadcrumb');
+
+    Route::controller(ShopController::class)->group(function() {
+        Route::get('/shops', 'index')->name('shop.index');
+        Route::get('/shop/create', 'create')->name('shop.create');
+        Route::post('/shop/store', 'store')->name('shop.store');
+        Route::get('/shop/{shop}/edit', 'edit')->name('shop.edit');
+        Route::post('/shop/{shop}/update', 'update')->name('shop.update');
+    });
+    Route::controller(UserController::class)->group(function() {
+        Route::get('/users', 'index')->name('user.index');
+    });
 });
 
 
