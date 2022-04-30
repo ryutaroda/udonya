@@ -15,25 +15,30 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+        <div class="min-h-screen bg-white">
+            @include('layouts.header')
 
-
+            <div class="max-w-5xl mx-auto">
+                @include('components.parts.alert')
+            </div>
 
             <!-- Page Content -->
-            <main>
-                <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8  md:grid md:grid-cols-9 md:gap-6">
-                    <div class="md:col-span-2">
-                        @include('layouts.sampleMenuSidebar')
-                    </div>
-                    <div class="md:col-span-7">
+            <main class="max-w-5xl mx-auto">
+
+                <div class="py-4 px-4 sm:px-6 lg:px-8  md:grid md:grid-cols-9 md:gap-6">
+                    <div class="md:col-span-9">
                         {{ $slot }}
                     </div>
                 </div>
             </main>
         </div>
+
+        @include('layouts.footer')
+
         <script src="https://unpkg.com/flowbite@1.4.3/dist/flowbite.js"></script>
     </body>
 </html>
