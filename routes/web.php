@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\Page\TopController as PageTopController;
+use App\Http\Controllers\Page\ShopController as PageShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +19,18 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
+//Route::get('/', function () {
+//    return redirect()->route('login');
+//});
+
+Route::name('page.')->group(function () {
+    Route::controller(PageTopController::class)->group(function() {
+        Route::get('/', 'top')->name('top');
+    });
+    Route::controller(PageShopController::class)->group(function() {
+        Route::get('/search', 'index')->name('shop.index');
+        Route::get('/udons/{shop}', 'show')->name('shop.show');
+    });
 });
 
 

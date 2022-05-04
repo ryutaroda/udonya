@@ -25,12 +25,12 @@
                 <th scope="col" class="px-6 py-4 w-1/2">
                     店名
                 </th>
-{{--                <th scope="col" class="px-6 py-4 text-center">--}}
-{{--                    登録日時--}}
-{{--                </th>--}}
-{{--                <th scope="col" class="px-6 py-4 text-center">--}}
-{{--                    更新日時--}}
-{{--                </th>--}}
+                {{--                <th scope="col" class="px-6 py-4 text-center">--}}
+                {{--                    登録日時--}}
+                {{--                </th>--}}
+                {{--                <th scope="col" class="px-6 py-4 text-center">--}}
+                {{--                    更新日時--}}
+                {{--                </th>--}}
                 <th scope="col" class="px-6 py-4">
                 </th>
             </tr>
@@ -50,16 +50,16 @@
                             </div>
                         </div>
                     </th>
-{{--                    <td class="px-6 py-4">--}}
-{{--                        @if(isset($shop->created_at))--}}
-{{--                            {{ $shop->created_at->format('y/m/d H:i') }}--}}
-{{--                        @endif--}}
-{{--                    </td>--}}
-{{--                    <td class="px-6 py-4">--}}
-{{--                        @if(isset($shop->updated_at))--}}
-{{--                            {{ $shop->updated_at->format('y/m/d H:i') }}--}}
-{{--                        @endif--}}
-{{--                    </td>--}}
+                    {{--                    <td class="px-6 py-4">--}}
+                    {{--                        @if(isset($shop->created_at))--}}
+                    {{--                            {{ $shop->created_at->format('y/m/d H:i') }}--}}
+                    {{--                        @endif--}}
+                    {{--                    </td>--}}
+                    {{--                    <td class="px-6 py-4">--}}
+                    {{--                        @if(isset($shop->updated_at))--}}
+                    {{--                            {{ $shop->updated_at->format('y/m/d H:i') }}--}}
+                    {{--                        @endif--}}
+                    {{--                    </td>--}}
                     <td class="px-6 py-4 text-right">
                         <a href="{{ route('shop.edit', $shop) }}" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">情報修正</a>
                     </td>
@@ -68,8 +68,8 @@
             </tbody>
         </table>
     </div>
-{{--    <div>--}}
-{{--        {{ $shops->links('pagination::tailwind') }}--}}
-{{--    </div>--}}
+    {{--    <div>--}}
+    {{--        {{ $shops->links('pagination::tailwind') }}--}}
+    {{--    </div>--}}
 
 </x-app-layout>
