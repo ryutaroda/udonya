@@ -1,4 +1,4 @@
-<svg class="mx-auto" width="70%" viewBox="0 0 1125 2436" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+<svg width="100%" height="100%" viewBox="0 0 1125 2436" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
     <rect id="アートボード1" x="0" y="0" width="1125" height="2436" style="fill:none;"/>
     <clipPath id="_clip1">
         <rect id="アートボード11" serif:id="アートボード1" x="0" y="0" width="1125" height="2436"/>

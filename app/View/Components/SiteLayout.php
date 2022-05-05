@@ -13,6 +13,6 @@ class SiteLayout extends Component
      */
     public function render()
     {
-        return view('layouts.site');
+        return view('layouts.site.app');
     }
 }

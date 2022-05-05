@@ -1,4 +1,4 @@
-<nav style="background-color: #ff8739" class="z-50 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800 shadow">
+<nav class="c-topPage__header z-50 border-gray-100 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <div class="flex md:order-2">
             <div class="hidden relative mr-3 md:mr-0 md:block">
