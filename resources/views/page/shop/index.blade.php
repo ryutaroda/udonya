@@ -1,21 +1,32 @@
-<x-app-layout>
+<x-site-layout>
 
-    <div
-        class="p-4 mb-0 sm:mb-4 w-full bg-white rounded-lg border shadow-sm sm:p-10 dark:bg-gray-800 dark:border-gray-700">
-        <div class="flex justify-between">
-            <h5 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">お店一覧</h5>
-            <a href="{{ route('shop.create') }}" class="inline-flex justify-center shadow-lg py-3 px-8 border border-transparent shadow-sm text-sm font-medium rounded-md text-white font-semibold bg-blue-700 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                お店を登録する
-                <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-            </a>
-        </div>
-        <p class="text-xs leading-snug">
-            うどん屋の登録をお願いします。<br>
-            入力項目が多数あるので、不明な箇所は未入力のままでも登録できます。
-        </p>
+    <div class="py-5 px-5">
+        <form action="{{ route('page.shop.index') }}" method="GET">
+            @csrf
+            <div class="flex">
+                <div class="relative w-full mx-auto shadow">
+                    <input type="search" id="search-dropdown" style="width: 300px"
+                           name="search_word"
+                           value="{{ $searchWord }}"
+                           class="block p-4 w-full z-20 text-sm text-gray-900 bg-gray-50 border-none rounded-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                           placeholder="店名・エリア・キーワード" required>
+                    <button onclick="location.href='/search'" type="submit" name="word_search"
+                            class="absolute top-0 right-0 py-4 px-10 text-sm font-medium text-white bg-gray-800 border-none rounded-r-lg border border-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        検　索
+                    </button>
+                </div>
+            </div>
+{{--            <div class="mt-5">--}}
+{{--                <a onclick="location.href='/search'" type="submit"--}}
+{{--                   class="w-full py-4 px-10 text-sm text-center font-medium text-white bg-gray-800 border-none rounded-lg border border-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">--}}
+{{--                    現地から探す--}}
+{{--                </a>--}}
+{{--            </div>--}}
+        </form>
     </div>
 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+    <div class="relative overflow-x-auto sm:rounded-lg px-5">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border dark:bg-gray-800 dark:border-gray-700">
             <tr>
@@ -25,12 +36,6 @@
                 <th scope="col" class="px-6 py-4 w-1/2">
                     店名
                 </th>
-                {{--                <th scope="col" class="px-6 py-4 text-center">--}}
-                {{--                    登録日時--}}
-                {{--                </th>--}}
-                {{--                <th scope="col" class="px-6 py-4 text-center">--}}
-                {{--                    更新日時--}}
-                {{--                </th>--}}
                 <th scope="col" class="px-6 py-4">
                 </th>
             </tr>
@@ -50,26 +55,15 @@
                             </div>
                         </div>
                     </th>
-                    {{--                    <td class="px-6 py-4">--}}
-                    {{--                        @if(isset($shop->created_at))--}}
-                    {{--                            {{ $shop->created_at->format('y/m/d H:i') }}--}}
-                    {{--                        @endif--}}
-                    {{--                    </td>--}}
-                    {{--                    <td class="px-6 py-4">--}}
-                    {{--                        @if(isset($shop->updated_at))--}}
-                    {{--                            {{ $shop->updated_at->format('y/m/d H:i') }}--}}
-                    {{--                        @endif--}}
-                    {{--                    </td>--}}
                     <td class="px-6 py-4 text-right">
-                        <a href="{{ route('shop.edit', $shop) }}" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">情報修正</a>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
     </div>
-    {{--    <div>--}}
-    {{--        {{ $shops->links('pagination::tailwind') }}--}}
-    {{--    </div>--}}
+    <div class="py-5 px-5">
+        {{ $shops->links('pagination::tailwind') }}
+    </div>
 
-</x-app-layout>
+</x-site-layout>
