@@ -1,12 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\ShopController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Site\ShopController as SiteShopController;
+use App\Http\Controllers\Site\TopController as SiteTopController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SampleController;
-use App\Http\Controllers\ShopController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\Page\TopController as PageTopController;
-use App\Http\Controllers\Page\ShopController as PageShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,44 +17,33 @@ use App\Http\Controllers\Page\ShopController as PageShopController;
 |
 */
 
-//Route::get('/', function () {
-//    return redirect()->route('login');
-//});
-
-Route::name('page.')->group(function () {
-    Route::controller(PageTopController::class)->group(function() {
+/**
+ * サイト画面
+ */
+Route::name('site.')->group(function () {
+    Route::controller(SiteTopController::class)->group(function () {
         Route::get('/', 'top')->name('top');
     });
-    Route::controller(PageShopController::class)->group(function() {
-        Route::get('/search', 'index')->name('shop.index');
-        Route::get('/udons/{shop}', 'show')->name('shop.show');
+    Route::controller(SiteShopController::class)->name('shop.')->group(function () {
+        Route::get('/search', 'index')->name('index');
+        Route::get('/udons/{shop}', 'show')->name('show');
     });
 });
 
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/sample1', [SampleController::class, 'sample1']);
-    Route::get('/sample/menu', [SampleController::class, 'menu']);
-
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::get('/sample/alerts', [SampleController::class, 'alerts'])->name('sample.alerts');
-    Route::get('/sample/accordion', [SampleController::class, 'accordion'])->name('sample.accordion');
-    Route::get('/sample/avatar', [SampleController::class, 'avatar'])->name('sample.avatar');
-    Route::get('/sample/badge', [SampleController::class, 'badge'])->name('sample.badge');
-    Route::get('/sample/breadcrumb', [SampleController::class, 'breadcrumb'])->name('sample.breadcrumb');
-
-    Route::controller(ShopController::class)->group(function() {
-        Route::get('/shops', 'index')->name('shop.index');
-        Route::get('/shop/create', 'create')->name('shop.create');
-        Route::post('/shop/store', 'store')->name('shop.store');
-        Route::get('/shop/{shop}/edit', 'edit')->name('shop.edit');
-        Route::post('/shop/{shop}/update', 'update')->name('shop.update');
+/**
+ * 管理画面
+ */
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::controller(UserController::class)->name('user.')->group(function () {
+        Route::get('/users', 'index')->name('index');
     });
-    Route::controller(UserController::class)->group(function() {
-        Route::get('/users', 'index')->name('user.index');
+
+    Route::controller(ShopController::class)->name('shop.')->group(function () {
+        Route::get('/shops', 'index')->name('index');
+        Route::get('/shop/create', 'create')->name('create');
+        Route::post('/shop/store', 'store')->name('store');
+        Route::get('/shop/{shop}/edit', 'edit')->name('edit');
+        Route::post('/shop/{shop}/update', 'update')->name('update');
     });
 });
 
