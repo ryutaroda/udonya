@@ -1,0 +1,18 @@
+header {
+    height: 60px;
+}
+
+section {
+    scroll-margin-top: 60px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+// キーボードの時だけボタンフォーカス
+button:focus-visible {
+    outline: 4px solid black;
+    outline-offset: 4px;
+}
+
