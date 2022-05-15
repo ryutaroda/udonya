@@ -26,7 +26,7 @@ class ShopController extends Controller
             $shopsQuery
                 ->where('name', 'like', "%" . $searchWord . "%");
         }
-        $shops = $shopsQuery->paginate();
+        $shops = $shopsQuery->orderBy('id', 'desc')->paginate(3);
         return view(
             'site.shop.index',
             compact([
@@ -44,7 +44,6 @@ class ShopController extends Controller
      */
     public function show(Shop $shop): Application|Factory|View
     {
-        $prefectures = Prefecture::all();
-        return view('page.shop.show', compact(['shop', 'prefectures']));
+        return view('site.shop.show', compact(['shop']));
     }
 }
