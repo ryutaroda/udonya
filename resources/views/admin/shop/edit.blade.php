@@ -15,20 +15,27 @@
         </p>
     </div>
 
-
     {{--    <div class="mt-10 sm:mt-0">--}}
     <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="mt-5 md:mt-0 md:col-span-3">
-            <form action="{{ route('admin.shop.update', $shop) }}" method="POST">
+            <form action="{{ route('admin.shop.update', $shop) }}" method="POST" enctype="multipart/form-data">
                 @method('POST')
                 @csrf
                 <div class="overflow-hidden sm:rounded-md">
                     <div class="px-2 sm:px-4 py-5 sm:p-10">
                         <div class="grid grid-cols-6 gap-5">
 
+
                             <div class="col-span-6 sm:col-span-4">
                                 @include('components.form.label', ['name' => 'お店の名前', 'required' => true])
                                 @include('components.form.edit.input', ['name' => 'name', 'value' => $shop->name])
+                            </div>
+                            <div class="col-span-6 sm:col-span-2">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-4 border-t border-gray-100 pt-2">
+                                @include('components.form.label', ['name' => 'お店の写真', 'required' => false])
+                                @include('components.form.edit.file', ['name' => 'shop_image_path', 'value' => $shop->shop_image_path])
                             </div>
                             <div class="col-span-6 sm:col-span-2">
                             </div>

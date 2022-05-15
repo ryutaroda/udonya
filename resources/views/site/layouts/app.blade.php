@@ -20,15 +20,17 @@
 
     </head>
     <body class="font-sans antialiased">
-        <div class="bg-orange-100">
-{{--            @include('layouts.site.header')--}}
+        <div style="background-color: rgba(243,243,243,0.78)">
+{{--            @include('site.layouts.header')--}}
 
             <!-- Page Content -->
             <main class="max-w-5xl mx-auto">
 
                 <div class="sm:px-6 lg:px-8  md:grid md:grid-cols-9 md:gap-6">
                     <div class="md:col-span-9">
-                        {{ $slot }}
+                        <div class="py-8 px-8">
+                            {{ $slot }}
+                        </div>
                     </div>
                 </div>
             </main>

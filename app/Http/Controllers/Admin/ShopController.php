@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
@@ -47,8 +48,13 @@ class ShopController extends Controller
     {
         $userId = Auth::id();
         $shop = new Shop();
-        $request->merge(['create_user_id' => $userId, 'update_user_id' => $userId]);
-        $shop->fill($request->all())->save();
+        $request->merge([
+            'create_user_id' => $userId,
+            'update_user_id' => $userId,
+        ]);
+        $shop->fill($request->all());
+        $shop->shop_image_path = $this->getRegisterImageUploadPath($request->shop_image_path);
+        $shop->save();
         return redirect()->route('admin.shop.index')->with('flash_message', '新しくお店を登録しました!!');
     }
 
@@ -73,9 +79,39 @@ class ShopController extends Controller
      */
     public function update(UpdateRequest $request, Shop $shop): RedirectResponse
     {
-        $userId = Auth::id();
-        $request->merge(['update_user_id' => $userId]);
-        $shop->fill($request->all())->save();
+        $request->merge([
+            'update_user_id' => Auth::id(),
+        ]);
+        $shop->fill($request->all());
+        if($request->shop_image_path) {
+            $shop->shop_image_path = $this->getUpdateImageUploadPath($request->shop_image_path, $shop);
+        }
+
+        $shop->save();
         return redirect()->route('admin.shop.index')->with('flash_message', 'お店の情報を更新しました');
+    }
+
+    /**
+     * @param string $imagePath
+     * @return false|string|null
+     */
+    private function getRegisterImageUploadPath(string $imagePath)
+    {
+        if ($imagePath) {
+            return Storage::disk('public')->putFile('shop', $imagePath, 'public');
+        }
+        return null;
+    }
+
+    /**
+     * @param ?string $imagePath
+     * @param Shop $shop
+     * @return false|mixed|string|void
+     */
+    private function getUpdateImageUploadPath(?string $imagePath, Shop $shop)
+    {
+        if ($imagePath) {
+            return Storage::disk('public')->putFile('shop', $imagePath, 'public');
+        }
     }
 }

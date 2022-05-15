@@ -25,12 +25,6 @@
                 <th scope="col" class="px-6 py-4 w-1/2">
                     店名
                 </th>
-{{--                <th scope="col" class="px-6 py-4 text-center">--}}
-{{--                    登録日時--}}
-{{--                </th>--}}
-{{--                <th scope="col" class="px-6 py-4 text-center">--}}
-{{--                    更新日時--}}
-{{--                </th>--}}
                 <th scope="col" class="px-6 py-4">
                 </th>
             </tr>
@@ -43,23 +37,13 @@
                     </td>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap w-1/2">
                         <div class="flex items-center space-x-4">
-                            <img class="w-10 h-10 rounded-full" src="" alt="">
+                            <img class="w-10 h-10 rounded-full" src="{{ Illuminate\Support\Facades\Storage::url($shop->shop_image_path) }}" alt="">
                             <div class="space-y-1 font-medium dark:text-white">
                                 <div>{{ $shop->name }}</div>
                                 <div class="text-sm text-gray-500 dark:text-gray-400">{{ $shop->post_code }}{{ ' ' }}{{ $shop->prefecture->name }}{{ ' ' }}{{ $shop->address1 }}{{ $shop->address2 }}{{ $shop->address3 }}</div>
                             </div>
                         </div>
                     </th>
-{{--                    <td class="px-6 py-4">--}}
-{{--                        @if(isset($shop->created_at))--}}
-{{--                            {{ $shop->created_at->format('y/m/d H:i') }}--}}
-{{--                        @endif--}}
-{{--                    </td>--}}
-{{--                    <td class="px-6 py-4">--}}
-{{--                        @if(isset($shop->updated_at))--}}
-{{--                            {{ $shop->updated_at->format('y/m/d H:i') }}--}}
-{{--                        @endif--}}
-{{--                    </td>--}}
                     <td class="px-6 py-4 text-right">
                         <a href="{{ route('admin.shop.edit', $shop) }}" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">情報修正</a>
                     </td>
