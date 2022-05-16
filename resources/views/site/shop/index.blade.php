@@ -22,7 +22,7 @@
         </div>
         @foreach($shops as $shop)
             <div class="p-searchList__resultShopCard">
-                <a href="/"></a>
+                <a href="{{ route('site.shop.show', $shop) }}"></a>
                 <div class="p-searchList__resultShopCard__shopImage shadow-lg">
                     @isset($shop->shop_image_path)
                         <img src="{{ Illuminate\Support\Facades\Storage::url($shop->shop_image_path) }}" alt="店舗イメージ">
@@ -42,9 +42,6 @@
                     </div>
                     <div class="p-searchList__resultShopCard__shopInfoOther">
                         定休日　：{{ $shop->regular_holiday }}
-                    </div>
-                    <div class="p-searchList__resultShopCard__shopInfoOther">
-                        営業時間：{{ $shop->business_hours }}
                     </div>
                 </div>
             </div>

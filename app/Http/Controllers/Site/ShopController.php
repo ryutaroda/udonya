@@ -24,7 +24,10 @@ class ShopController extends Controller
         $shopsQuery = Shop::with('prefecture');
         if (!is_null($searchWord)) {
             $shopsQuery
-                ->where('name', 'like', "%" . $searchWord . "%");
+                ->where('name', 'like', "%" . $searchWord . "%")
+                ->orWhere('address1', 'like', "%" . $searchWord . "%")
+                ->orWhere('address2', 'like', "%" . $searchWord . "%")
+                ->orWhere('address3', 'like', "%" . $searchWord . "%");
         }
         $shops = $shopsQuery->orderBy('id', 'desc')->paginate(3);
         return view(
