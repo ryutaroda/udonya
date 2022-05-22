@@ -27,6 +27,8 @@
                 </th>
                 <th scope="col" class="px-6 py-4">
                 </th>
+                <th scope="col" class="px-6 py-4">
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -46,6 +48,9 @@
                     </th>
                     <td class="px-6 py-4 text-right">
                         <a href="{{ route('admin.shop.edit', $shop) }}" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">情報修正</a>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <a href="{{ route('admin.shop_menu.index', $shop) }}" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">メニュ管理</a>
                     </td>
                 </tr>
             @endforeach

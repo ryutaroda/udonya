@@ -54,6 +54,7 @@ class ShopController extends Controller
         ]);
         $shop->fill($request->all());
         $shop->shop_image_path = $this->getRegisterImageUploadPath($request->shop_image_path);
+        $shop->menu_image_path = $this->getRegisterImageUploadPath($request->menu_image_path);
         $shop->save();
         return redirect()->route('admin.shop.index')->with('flash_message', '新しくお店を登録しました!!');
     }
@@ -85,6 +86,9 @@ class ShopController extends Controller
         $shop->fill($request->all());
         if($request->shop_image_path) {
             $shop->shop_image_path = $this->getUpdateImageUploadPath($request->shop_image_path, $shop);
+        }
+        if($request->menu_image_path) {
+            $shop->menu_image_path = $this->getUpdateImageUploadPath($request->menu_image_path, $shop);
         }
 
         $shop->save();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ShopController;
+use App\Http\Controllers\Admin\ShopMenuController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\ShopController as SiteShopController;
 use App\Http\Controllers\Site\TopController as SiteTopController;
@@ -44,6 +45,13 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
         Route::post('/shop/store', 'store')->name('store');
         Route::get('/shop/{shop}/edit', 'edit')->name('edit');
         Route::post('/shop/{shop}/update', 'update')->name('update');
+    });
+    Route::controller(ShopMenuController::class)->name('shop_menu.')->group(function () {
+        Route::get('/shop/{shop}/menus', 'index')->name('index');
+        Route::get('/shop/{shop}/menu/create', 'create')->name('create');
+        Route::post('/shop/{shop}/menu/store', 'store')->name('store');
+        Route::get('/shop/{shop}/menu/{shopMenu}/edit', 'edit')->name('edit');
+        Route::post('/shop/{shop}/menu/{shopMenu}/update', 'update')->name('update');
     });
 });
 

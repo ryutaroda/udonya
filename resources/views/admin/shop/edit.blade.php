@@ -40,6 +40,13 @@
                             <div class="col-span-6 sm:col-span-2">
                             </div>
 
+                            <div class="col-span-6 sm:col-span-4 border-t border-gray-100 pt-2">
+                                @include('components.form.label', ['name' => 'メニューの写真', 'required' => false])
+                                @include('components.form.edit.file', ['name' => 'menu_image_path', 'value' => $shop->menu_image_path])
+                            </div>
+                            <div class="col-span-6 sm:col-span-2">
+                            </div>
+
                             <div class="col-span-6 sm:col-span-6 lg:col-span-2 border-t border-gray-100 pt-2">
                                 @include('components.form.label', ['name' => '都道府県', 'required' => true])
                                 @include('components.form.edit.select', ['name' => 'prefecture_id', 'collection' => $prefectures, 'value' => $shop->prefecture_id])

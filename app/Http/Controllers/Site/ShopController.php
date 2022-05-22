@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\ShopController\IndexRequest;
 use App\Models\Prefecture;
 use App\Models\Shop;
+use App\Models\ShopMenu;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -29,7 +30,7 @@ class ShopController extends Controller
                 ->orWhere('address2', 'like', "%" . $searchWord . "%")
                 ->orWhere('address3', 'like', "%" . $searchWord . "%");
         }
-        $shops = $shopsQuery->orderBy('id', 'desc')->paginate(3);
+        $shops = $shopsQuery->orderBy('id', 'desc')->paginate();
         return view(
             'site.shop.index',
             compact([
@@ -47,6 +48,7 @@ class ShopController extends Controller
      */
     public function show(Shop $shop): Application|Factory|View
     {
-        return view('site.shop.show', compact(['shop']));
+        $shopMenuList = ShopMenu::where('shop_id', $shop->id)->get();
+        return view('site.shop.show', compact(['shop', 'shopMenuList']));
     }
 }

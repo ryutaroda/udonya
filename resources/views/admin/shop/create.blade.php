@@ -23,7 +23,7 @@
 
     <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="mt-5 md:mt-0 md:col-span-3">
-            <form action="{{ route('admin.shop.store') }}" method="POST">
+            <form action="{{ route('admin.shop.store') }}" method="POST" enctype="multipart/form-data">
                 @method('POST')
                 @csrf
                 <div class="overflow-hidden sm:rounded-md">
@@ -40,6 +40,13 @@
                             <div class="col-span-6 sm:col-span-4 border-t border-gray-100 pt-2">
                                 @include('components.form.label', ['name' => 'お店の写真', 'required' => false])
                                 @include('components.form.create.file', ['name' => 'shop_image_path'])
+                            </div>
+                            <div class="col-span-6 sm:col-span-2">
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-4 border-t border-gray-100 pt-2">
+                                @include('components.form.label', ['name' => 'メニューの写真', 'required' => false])
+                                @include('components.form.create.file', ['name' => 'menu_image_path'])
                             </div>
                             <div class="col-span-6 sm:col-span-2">
                             </div>

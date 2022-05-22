@@ -20,8 +20,9 @@
 
     </head>
     <body class="font-sans antialiased">
-        <div style="background-color: rgba(243,243,243,0.78)">
-{{--            @include('site.layouts.header')--}}
+        <div style="background-color: rgba(243,243,243,0.78);">
+            @include('site.layouts.header')
+                <div style="height: 60px"></div>
 
             <!-- Page Content -->
             <main class="max-w-5xl mx-auto">

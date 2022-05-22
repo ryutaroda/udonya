@@ -17,7 +17,37 @@
                 <h3 class="p-shopDetail__specTitleString">食べたうどん</h3>
             </div>
             <div class="p-shopDetail__specBody">
+                <div class="p-shopDetail__menuList">
+                    @foreach($shopMenuList as $menu)
+                        <div class="p-shopDetail__menu">
+                            <div class="p-shopDetail__menuImage shadow-lg">
+                                @isset($menu->image_path)
+                                    <img src="{{ Illuminate\Support\Facades\Storage::url($menu->image_path) }}"
+                                         alt="うどんイメージ">
+                                @else
+                                    <img src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
+                                @endisset
+                            </div>
+                            <div class="p-shopDetail__menuInfo">
+                                {{ $menu->name }} / {{ $menu->price }}円
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
 
+        <div class="p-shopDetail__spec">
+            <div class="p-shopDetail__specTitle p-shopDetail__specTitle--square">
+                <h3 class="p-shopDetail__specTitleString">メニュー</h3>
+            </div>
+            <div class="p-shopDetail__specBody shadow-lg">
+                @isset($shop->menu_image_path)
+                    <img src="{{ Illuminate\Support\Facades\Storage::url($shop->menu_image_path) }}"
+                         alt="うどんイメージ">
+                @else
+                    <img src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
+                @endisset
             </div>
         </div>
 
