@@ -102,7 +102,7 @@ class ShopController extends Controller
     private function getRegisterImageUploadPath(string $imagePath)
     {
         if ($imagePath) {
-            return Storage::disk('public')->putFile('shop', $imagePath, 'public');
+            return Storage::putFile('shop', $imagePath);
         }
         return null;
     }
@@ -115,7 +115,7 @@ class ShopController extends Controller
     private function getUpdateImageUploadPath(?string $imagePath, Shop $shop)
     {
         if ($imagePath) {
-            return Storage::disk('public')->putFile('shop', $imagePath, 'public');
+            return Storage::putFile('shop', $imagePath);
         }
     }
 }

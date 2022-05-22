@@ -39,7 +39,15 @@
                     </td>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap w-1/2">
                         <div class="flex items-center space-x-4">
-                            <img class="w-10 h-10 rounded-full" src="{{ Illuminate\Support\Facades\Storage::url($shop->shop_image_path) }}" alt="">
+                            @isset($shop->shop_image_path)
+                                @if(Illuminate\Support\Facades\Storage::exists($shop->shop_image_path))
+                                    <img class="w-10 h-10 shadow" src="{{ Illuminate\Support\Facades\Storage::url($shop->shop_image_path) }}" alt="店舗イメージ">
+                                @else
+                                    <img class="w-10 h-10 shadow" src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
+                                @endif
+                            @else
+                                <img class="w-10 h-10 shadow" src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
+                            @endisset
                             <div class="space-y-1 font-medium dark:text-white">
                                 <div>{{ $shop->name }}</div>
                                 <div class="text-sm text-gray-500 dark:text-gray-400">{{ $shop->post_code }}{{ ' ' }}{{ $shop->prefecture->name }}{{ ' ' }}{{ $shop->address1 }}{{ $shop->address2 }}{{ $shop->address3 }}</div>
