@@ -1,0 +1,42 @@
+html {
+    height: 100%;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'YuGothic', 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'Roboto', Roboto, Osaka, sans-serif;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+    color: text-color(base);
+    line-height: 1.65;
+}
+
+main { flex: 1; }
+
+a {
+    color: text-color(link01);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    appearance: none;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+html, body,
+p, ol, ul, li, dl, dt, dd,
+blockquote, figure, fieldset, legend, textarea, pre, iframe,
+h1, h2, h3, h4, h5, h6, hr {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol, li {
+    list-style: none;
+}

@@ -1,0 +1,135 @@
+.p-shopDetail {
+    &__head {
+        margin-bottom: 20px;
+    }
+
+    &__headShopName {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.4;
+        margin: 10px 0 5px;
+    }
+
+    &__headAddress {
+        font-size: 12px;
+        font-weight: bold;
+        color: #888;
+        margin-bottom: 5px;
+    }
+
+    &__headShopImage {
+        & > img {
+            width: 50%;
+            height: 75%;
+            object-fit: cover;
+            object-position: 50% 75%;
+            border-radius: 8px;
+        }
+    }
+
+    &__spec {
+        margin-bottom: 20px;
+    }
+
+    &__specTitle {
+        display: inline-block;
+        margin-bottom: 5px;
+
+        &--square {
+            position: relative;
+
+            &::before {
+                content: "";
+                width: 13px;
+                height: 13px;
+                margin-right: 10px;
+                margin-top: 5px;
+                border-radius: 3px;
+                background: rgba(255, 135, 57, 0.75);
+                position: absolute;
+                top: 1px;
+                left: 0;
+            }
+        }
+    }
+
+    &__specTitleString {
+        font-size: 15px;
+        font-weight: bold;
+        margin-left: 23px;
+    }
+
+    &__specBody {
+        font-size: 14px;
+
+        & > img {
+            width: 100%;
+            //height: 130px;
+            //object-fit: cover;
+            //object-position: 50% 75%;
+            border-radius: 8px;
+        }
+    }
+
+    &__specBodyText {
+        //white-space: break-spaces;
+        white-space: pre-line;
+    }
+
+    &__menuList {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__menu {
+        width: 50%;
+    }
+
+    &__menuImage {
+        margin: 8px;
+        border-radius: 8px;
+        & > img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            object-position: 50% 75%;
+            border-radius: 8px;
+        }
+    }
+
+    &__menuInfo {
+        margin-bottom: 10px;
+        margin-top: 5px;
+        text-align: center;
+        line-height: 1.0;
+    }
+
+
+}
+
+.ex003 {
+    display: inline-block;
+    background-color: #ededed;
+    width: 200px;
+    height: 100px;
+    padding: 20px 10px;
+}
+
+.new {
+    position: relative;
+}
+
+.new::after {
+    content: "NEW";
+    text-align: center;
+    vertical-align: middle;
+    width: 40px;
+    height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ff744d;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

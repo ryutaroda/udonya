@@ -1,0 +1,54 @@
+// size
+$sizes: tb, sp;
+
+// font size
+$fontSizes: 10, 12, 14, 16, 18, 20, 22, 24, 26, 28;
+
+// text line
+$lines: 2, 3, 4;
+
+// space
+$spaces: 0, 8, 16, 24, 32, 40;
+
+// breakpoint
+$breakpoints: (
+    pc: 1280px,
+    tb: 960px,
+    sp: 560px,
+    min: 360px,
+) !default;
+
+// key color
+$key-colors: (
+    pink01: #f47aa9,
+    pink02: #cb678d,
+    black: #333,
+    white: #fff,
+);
+@function key-color($key) {
+    @return map-get($key-colors, $key);
+}
+
+// text color
+$text-colors: (
+    base: #333,
+    white: #fff,
+    gray: #999,
+    link01: #0074ad,
+    link02: #666,
+    link02-hover: #333,
+);
+@function text-color($key) {
+    @return map-get($text-colors, $key);
+}
+
+// btn color
+$btn-colors: (
+    normal: #fff,
+    normal-hover: #333,
+    cv: #f47aa9,
+    cv-hover: rgba(244, 122, 169, .8),
+);
+@function btn-color($key) {
+    @return map-get($btn-colors, $key);
+}

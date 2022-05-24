@@ -1,0 +1,12 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+
+@import "Foundation/normalize";
+@import "Foundation/base";
+@import "Foundation/variable";
+@import "Foundation/mixin";
+@import "Object/Project/page/searchList";
+@import "Object/Project/page/shopDetail";

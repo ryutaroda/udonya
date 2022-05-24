@@ -1,0 +1,12 @@
+$breakpoint-down: (
+    'pc': 'screen and (max-width: #{map-get($breakpoints, 'pc')})',
+    'tb': 'screen and (max-width: #{map-get($breakpoints, 'tb')})',
+    'sp': 'screen and (max-width: #{map-get($breakpoints, 'sp')})',
+    'min': 'screen and (max-width: #{map-get($breakpoints, 'min')})',
+) !default;
+
+@mixin mq($breakpoint: tb) {
+    @media #{map-get($breakpoint-down, $breakpoint)} {
+        @content;
+    }
+}
