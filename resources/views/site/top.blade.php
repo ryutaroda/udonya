@@ -1,14 +1,16 @@
+@php
+    use App\Http\ViewModels\Site\Top\TopViewModel;
+    /** @var TopViewModel $viewModel */
+@endphp
 <x-site-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         </h2>
     </x-slot>
-
     <div class="px-5 c-topPage">
         <div class="c-topPage__udon mb-5">
             @include('img.svg.udonn')
         </div>
-
         <form action="{{ route('site.shop.index') }}" method="GET" class="p-searchList__searchForm">
             @csrf
             <input type="search" id="search-dropdown"
@@ -20,10 +22,5 @@
                 検索
             </button>
         </form>
-
-
-
     </div>
-
-
 </x-site-layout>

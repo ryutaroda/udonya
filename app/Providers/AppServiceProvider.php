@@ -34,18 +34,18 @@ class AppServiceProvider extends ServiceProvider
         // Site
         // Site.TopController.Top
         $this->app->bind(
-            \App\UseCase\Site\TopController\Top\SiteTopTopUseCaseInterface::class,
-            \App\Domain\Application\Site\TopController\SiteTopTopInteractor::class
+            \App\UseCase\Site\Top\Top\SiteTopTopUseCaseInterface::class,
+            \App\Domain\Application\Site\Top\SiteTopTopInteractor::class
         );
         // Site.ShopController.Index
         $this->app->bind(
-            \App\UseCase\Site\ShopController\Index\SiteShopIndexUseCaseInterface::class,
-            \App\Domain\Application\Site\ShopController\SiteShopIndexInteractor::class
+            \App\UseCase\Site\Shop\Index\SiteShopIndexUseCaseInterface::class,
+            \App\Domain\Application\Site\Shop\SiteShopIndexInteractor::class
         );
         // Site.ShopController.Show
         $this->app->bind(
-            \App\UseCase\Site\ShopController\Show\SiteShopShowUseCaseInterface::class,
-            \App\Domain\Application\Site\ShopController\SiteShopShowInteractor::class
+            \App\UseCase\Site\Shop\Show\SiteShopShowUseCaseInterface::class,
+            \App\Domain\Application\Site\Shop\SiteShopShowInteractor::class
         );
     }
 

@@ -1,14 +1,18 @@
+@php
+    use App\Http\ViewModels\Site\Shop\ShowViewModel;
+    /** @var ShowViewModel $viewModel */
+@endphp
 <x-site-layout>
     <div class="p-shopDetail">
         <div class="p-shopDetail__head">
             <div class="p-shopDetail__headShopName">
-                {{ $shop->name }}
+                {{ $viewModel->getShop()->name }}
             </div>
             <div class="p-shopDetail__headAddress">
-                〒{{ $shop->post_code }}{{ ' ' }}{{ $shop->prefecture->name }}{{ ' ' }}{{ $shop->address1 }}{{ $shop->address2 }}{{ $shop->address3 }}
+                〒{{ $viewModel->getShop()->post_code }}{{ ' ' }}{{ $viewModel->getShop()->prefecture->name }}{{ ' ' }}{{ $viewModel->getShop()->address1 }}{{ $viewModel->getShop()->address2 }}{{ $viewModel->getShop()->address3 }}
             </div>
             <div class="p-shopDetail__headShopImage">
-                <img src="{{ Illuminate\Support\Facades\Storage::url($shop->shop_image_path) }}" alt="店舗イメージ">
+                <img src="{{ Illuminate\Support\Facades\Storage::url($viewModel->getShop()->shop_image_path) }}" alt="店舗イメージ">
             </div>
         </div>
 
@@ -18,7 +22,7 @@
             </div>
             <div class="p-shopDetail__specBody">
                 <div class="p-shopDetail__menuList">
-                    @foreach($shopMenuList as $menu)
+                    @foreach($viewModel->getShopMenuList() as $menu)
                         <div class="p-shopDetail__menu">
                             <div class="p-shopDetail__menuImage shadow-lg">
                                 @isset($menu->image_path)
@@ -42,8 +46,8 @@
                 <h3 class="p-shopDetail__specTitleString">メニュー</h3>
             </div>
             <div class="p-shopDetail__specBody shadow-lg">
-                @isset($shop->menu_image_path)
-                    <img src="{{ Illuminate\Support\Facades\Storage::url($shop->menu_image_path) }}"
+                @isset($viewModel->getShop()->menu_image_path)
+                    <img src="{{ Illuminate\Support\Facades\Storage::url($viewModel->getShop()->menu_image_path) }}"
                          alt="うどんイメージ">
                 @else
                     <img src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
@@ -56,7 +60,7 @@
                 <h3 class="p-shopDetail__specTitleString">営業時間</h3>
             </div>
             <div class="p-shopDetail__specBody">
-                <p class="p-shopDetail__specBodyText">{{ $shop->business_hours }}</p>
+                <p class="p-shopDetail__specBodyText">{{ $viewModel->getShop()->business_hours }}</p>
             </div>
         </div>
         <div class="p-shopDetail__spec">
@@ -64,7 +68,7 @@
                 <h3 class="p-shopDetail__specTitleString">支払方法</h3>
             </div>
             <div class="p-shopDetail__specBody">
-                <p class="p-shopDetail__specBodyText">{{ $shop->payment_detail }}</p>
+                <p class="p-shopDetail__specBodyText">{{ $viewModel->getShop()->payment_detail }}</p>
             </div>
         </div>
 

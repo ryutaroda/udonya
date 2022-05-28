@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Site\ShopController\IndexRequest;
-use App\Models\Prefecture;
+use App\Http\Requests\Site\Shop\IndexRequest;
+use App\Http\Requests\Site\Shop\ShowRequest;
+use App\Http\ViewModels\Site\Shop\IndexViewModel;
+use App\Http\ViewModels\Site\Shop\ShowViewModel;
 use App\Models\Shop;
-use App\Models\ShopMenu;
+use App\UseCase\Site\Shop\Index\SiteShopIndexUseCaseInterface;
+use App\UseCase\Site\Shop\Show\SiteShopShowUseCaseInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -17,38 +20,46 @@ class ShopController extends Controller
      * GET /search.
      *
      * @param IndexRequest $request
+     * @param SiteShopIndexUseCaseInterface $interactor
      * @return Application|Factory|View
      */
-    public function index(IndexRequest $request): Application|Factory|View
-    {
-        $searchWord = $request->search_word;
-        $shopsQuery = Shop::with('prefecture');
-        if (!is_null($searchWord)) {
-            $shopsQuery
-                ->where('name', 'like', "%" . $searchWord . "%")
-                ->orWhere('address1', 'like', "%" . $searchWord . "%")
-                ->orWhere('address2', 'like', "%" . $searchWord . "%")
-                ->orWhere('address3', 'like', "%" . $searchWord . "%");
-        }
-        $shops = $shopsQuery->orderBy('id', 'desc')->paginate();
-        return view(
-            'site.shop.index',
-            compact([
-                'shops',
-                'searchWord'
-            ])
+    public function index(
+        IndexRequest $request,
+        SiteShopIndexUseCaseInterface $interactor
+    ) {
+        $input = $request->makeInputData();
+        $output = $interactor->invoke($input);
+        $viewModel = new IndexViewModel(
+            $output->getShops(),
+            $output->getSearchWord()
+        );
+
+        return view("site.shop.index")->with(
+            compact("viewModel")
         );
     }
 
     /**
      * GET /udons/{shop}.
      *
+     * @param ShowRequest $request
+     * @param SiteShopShowUseCaseInterface $interactor
      * @param Shop $shop
      * @return Application|Factory|View
      */
-    public function show(Shop $shop): Application|Factory|View
-    {
-        $shopMenuList = ShopMenu::where('shop_id', $shop->id)->get();
-        return view('site.shop.show', compact(['shop', 'shopMenuList']));
+    public function show(
+        ShowRequest $request,
+        SiteShopShowUseCaseInterface $interactor,
+        Shop $shop
+    ): Application|Factory|View {
+        $input = $request->makeInputData($shop);
+        $output = $interactor->invoke($input);
+        $viewModel = new ShowViewModel(
+            $output->getShop(),
+            $output->getShopMenuList()
+        );
+        return view("site.shop.show")->with(
+            compact("viewModel")
+        );
     }
 }
