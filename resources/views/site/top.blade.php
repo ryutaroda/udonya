@@ -10,11 +10,10 @@
     <div class="px-5 c-topPage">
         <div class="c-topPage__udon mb-5">
             <img src="{{ asset('image/noren_udon.png') }}" style="width: 200%" alt="店舗イメージ">
-{{--            @include('img.svg.udonn')--}}
         </div>
         <form action="{{ route('site.shop.index') }}" method="GET" class="p-searchList__searchForm">
             @csrf
-            <input type="search" id="search-dropdown"
+            <input type="text" id="search-dropdown"
                    name="search_word"
                    class="p-searchList__searchForm__word"
                    placeholder="店名・エリア・キーワード" required>

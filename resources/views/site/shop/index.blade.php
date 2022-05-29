@@ -9,7 +9,7 @@
 
     <form action="{{ route('site.shop.index') }}" method="GET" class="p-searchList__searchForm">
         @csrf
-        <input type="search" id="search-dropdown"
+        <input type="text" id="search-dropdown"
                name="search_word"
                value="{{ $viewModel->getSearchWord() }}"
                class="p-searchList__searchForm__word"
