@@ -28,15 +28,7 @@
             <div class="p-searchList__resultShopCard">
                 <a href="{{ route('site.shop.show', $shop) }}"></a>
                 <div class="p-searchList__resultShopCard__shopImage shadow-lg">
-                    @isset($shop->shop_image_path)
-                        @if(Illuminate\Support\Facades\Storage::exists($shop->shop_image_path))
-                            <img src="{{ Illuminate\Support\Facades\Storage::url($shop->shop_image_path) }}" alt="店舗イメージ">
-                        @else
-                            <img src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
-                        @endif
-                    @else
-                        <img src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
-                    @endisset
+                    <img src="{{ $viewModel->getShopImageUrl($shop) }}" alt="店舗イメージ">
                 </div>
                 <div class="p-searchList__resultShopCard__shopInfo">
                     <div class="p-searchList__resultShopCard__shopInfoTitle">

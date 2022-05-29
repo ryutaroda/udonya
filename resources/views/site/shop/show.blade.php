@@ -12,7 +12,7 @@
                 〒{{ $viewModel->getShop()->post_code }}{{ ' ' }}{{ $viewModel->getShop()->prefecture->name }}{{ ' ' }}{{ $viewModel->getShop()->address1 }}{{ $viewModel->getShop()->address2 }}{{ $viewModel->getShop()->address3 }}
             </div>
             <div class="p-shopDetail__headShopImage">
-                <img src="{{ Illuminate\Support\Facades\Storage::url($viewModel->getShop()->shop_image_path) }}" alt="店舗イメージ">
+                <img src="{{ $viewModel->getShopImageUrl() }}" alt="店舗イメージ">
             </div>
         </div>
 
@@ -25,12 +25,7 @@
                     @foreach($viewModel->getShopMenuList() as $menu)
                         <div class="p-shopDetail__menu">
                             <div class="p-shopDetail__menuImage shadow-lg">
-                                @isset($menu->image_path)
-                                    <img src="{{ Illuminate\Support\Facades\Storage::url($menu->image_path) }}"
-                                         alt="うどんイメージ">
-                                @else
-                                    <img src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
-                                @endisset
+                                <img src="{{ $viewModel->getMenuImageUrl($menu) }}" alt="うどんイメージ">
                             </div>
                             <div class="p-shopDetail__menuInfo">
                                 {{ $menu->name }} / {{ $menu->price }}円
@@ -46,12 +41,7 @@
                 <h3 class="p-shopDetail__specTitleString">メニュー</h3>
             </div>
             <div class="p-shopDetail__specBody shadow-lg">
-                @isset($viewModel->getShop()->menu_image_path)
-                    <img src="{{ Illuminate\Support\Facades\Storage::url($viewModel->getShop()->menu_image_path) }}"
-                         alt="うどんイメージ">
-                @else
-                    <img src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
-                @endisset
+                <img src="{{ $viewModel->getShopMenuImageUrl() }}" alt="店舗イメージ">
             </div>
         </div>
 
