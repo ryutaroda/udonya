@@ -1,11 +1,14 @@
 .c-topPage {
     /*background-color: #ff8739;*/
     height: 100vh;
-
 }
 
 .c-topPage__header {
     /*background-color: #ff8739;*/
+}
+
+.c-topPage__headerTitle{
+
 }
 
 .c-topPage__udon {
