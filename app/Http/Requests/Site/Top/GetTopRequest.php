@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Site\TopController;
+namespace App\Http\Requests\Site\Top;
 
+use App\UseCase\Site\Top\Top\SiteTopTopInputData;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GetTopRequest extends FormRequest
@@ -26,5 +27,13 @@ class GetTopRequest extends FormRequest
         return [
 
         ];
+    }
+
+    /**
+     * @return SiteTopTopInputData
+     */
+    public function makeInputData(): SiteTopTopInputData
+    {
+        return new SiteTopTopInputData();
     }
 }

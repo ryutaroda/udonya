@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Site\ShopController;
+namespace App\Http\Requests\Site\Shop;
 
+use App\UseCase\Site\Shop\Index\SiteShopIndexInputData;
 use Illuminate\Foundation\Http\FormRequest;
 
 class IndexRequest extends FormRequest
@@ -24,7 +25,20 @@ class IndexRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'search_word' => [
+                'nullable',
+                'string'
+            ],
         ];
+    }
+
+    /**
+     * @return SiteShopIndexInputData
+     */
+    public function makeInputData(): SiteShopIndexInputData
+    {
+        return new SiteShopIndexInputData(
+            $this->input('search_word')
+        );
     }
 }

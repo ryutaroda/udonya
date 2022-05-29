@@ -1,3 +1,7 @@
+@php
+    use App\Http\ViewModels\Site\Shop\IndexViewModel;
+    /** @var IndexViewModel $viewModel */
+@endphp
 <x-site-layout>
     <x-slot name="title">
 
@@ -7,7 +11,7 @@
         @csrf
         <input type="search" id="search-dropdown"
                name="search_word"
-               value="{{ $searchWord }}"
+               value="{{ $viewModel->getSearchWord() }}"
                class="p-searchList__searchForm__word"
                placeholder="店名・エリア・キーワード" required>
         <button onclick="location.href='/search'" type="submit" name="word_search"
@@ -18,21 +22,13 @@
 
     <div class="p-searchList__result">
         <div class="p-searchList__resultNumber">
-            検索結果 <span class="p-searchList__resultNumber--red">{{ $shops->total() }}</span>件
+            検索結果 <span class="p-searchList__resultNumber--red">{{ $viewModel->getShopTotal() }}</span>件
         </div>
-        @foreach($shops as $shop)
+        @foreach($viewModel->getShops() as $shop)
             <div class="p-searchList__resultShopCard">
                 <a href="{{ route('site.shop.show', $shop) }}"></a>
                 <div class="p-searchList__resultShopCard__shopImage shadow-lg">
-                    @isset($shop->shop_image_path)
-                        @if(Illuminate\Support\Facades\Storage::exists($shop->shop_image_path))
-                            <img src="{{ Illuminate\Support\Facades\Storage::url($shop->shop_image_path) }}" alt="店舗イメージ">
-                        @else
-                            <img src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
-                        @endif
-                    @else
-                        <img src="{{ asset('image/no_image01.jpeg') }}" alt="ノーイメージ">
-                    @endisset
+                    <img src="{{ $viewModel->getShopImageUrl($shop) }}" alt="店舗イメージ">
                 </div>
                 <div class="p-searchList__resultShopCard__shopInfo">
                     <div class="p-searchList__resultShopCard__shopInfoTitle">
@@ -53,7 +49,7 @@
     </div>
 
     <div class="py-5">
-        {{ $shops->links('pagination::tailwind') }}
+        {{ $viewModel->getShops()->links('pagination::tailwind') }}
     </div>
 
 </x-site-layout>

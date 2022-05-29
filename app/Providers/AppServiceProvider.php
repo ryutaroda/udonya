@@ -14,7 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->registerUseCases();
+        $this->registerRepositories();
     }
 
     /**
@@ -25,5 +26,35 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+    }
+
+
+    private function registerUseCases()
+    {
+        // Site
+        // Site.TopController.Top
+        $this->app->bind(
+            \App\UseCase\Site\Top\Top\SiteTopTopUseCaseInterface::class,
+            \App\Domain\Application\Site\Top\SiteTopTopInteractor::class
+        );
+        // Site.ShopController.Index
+        $this->app->bind(
+            \App\UseCase\Site\Shop\Index\SiteShopIndexUseCaseInterface::class,
+            \App\Domain\Application\Site\Shop\SiteShopIndexInteractor::class
+        );
+        // Site.ShopController.Show
+        $this->app->bind(
+            \App\UseCase\Site\Shop\Show\SiteShopShowUseCaseInterface::class,
+            \App\Domain\Application\Site\Shop\SiteShopShowInteractor::class
+        );
+    }
+
+    private function registerRepositories()
+    {
+        // Transaction
+        $this->app->bind(
+            \App\Domain\CommonRepository\DataStoreTransactionInterface::class,
+            \App\Infrastracture\EloquentRepository\DataStoreTransactionRepository::class
+        );
     }
 }
