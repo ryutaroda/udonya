@@ -1110,6 +1110,15 @@ input:checked + .toggle-bg{
 .h-9{
   height: 2.25rem;
 }
+.h-0\.5{
+  height: 0.125rem;
+}
+.h-0{
+  height: 0px;
+}
+.h-24{
+  height: 6rem;
+}
 .min-h-screen{
   min-height: 100vh;
 }
