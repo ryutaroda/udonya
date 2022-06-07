@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\ShopMenuController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\ShopController as SiteShopController;
 use App\Http\Controllers\Site\TopController as SiteTopController;
+use App\Http\Controllers\Site\InquiryController as SiteInquiryController;
+use App\Http\Controllers\Admin\InquiryController as AdminInquiryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +31,8 @@ Route::name('site.')->group(function () {
         Route::get('/search', 'index')->name('index');
         Route::get('/udons/{shop}', 'show')->name('show');
     });
+    Route::resource('inquiries', SiteInquiryController::class)
+        ->only(['create', 'store']);
 });
 
 /**
@@ -53,6 +57,10 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
         Route::get('/shop/{shop}/menu/{shopMenu}/edit', 'edit')->name('edit');
         Route::post('/shop/{shop}/menu/{shopMenu}/update', 'update')->name('update');
     });
+
+    Route::resource('inquiries', AdminInquiryController::class)->only([
+        'index'
+    ]);
 });
 
 

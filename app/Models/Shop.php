@@ -8,19 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Shop extends Model
+class Shop extends ModelBase
 {
-    use HasFactory, SoftDeletes;
-
-    /** @var array  */
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at'
-    ];
-
-    /** @var array  */
-    protected $guarded = ["id"];
+    use HasFactory;
 
     /**
      * @return BelongsTo

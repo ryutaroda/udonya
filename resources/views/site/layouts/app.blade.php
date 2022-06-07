@@ -22,6 +22,13 @@
     <body class="font-sans antialiased">
         <div style="background-color: rgba(243,243,243,0.78);">
             @include('site.layouts.header')
+
+            <div class="max-w-5xl mx-auto">
+{{--               <div style="height: 60px;"></div>--}}
+                <div class="absolute w-full">
+                    @include('components.parts.alert')
+                </div>
+            </div>
                 <div style="height: 60px"></div>
 
             <!-- Page Content -->
@@ -29,7 +36,7 @@
 
                 <div class="sm:px-6 lg:px-8  md:grid md:grid-cols-9 md:gap-6">
                     <div class="md:col-span-9">
-                        <div class="py-8 px-8">
+                        <div class="py-6 px-6">
                             {{ $slot }}
                         </div>
                     </div>

@@ -1,4 +1,5 @@
 @if (session('flash_message'))
+    <div style="height: 60px;"></div>
     <div class="js-hide_flash_message pt-4 px-4 sm:px-6 lg:px-8">
         <div class="w-full p-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
             <span class="font-medium">{{ session('flash_message') }}</span>
