@@ -9,7 +9,7 @@
                 @method('POST')
                 @csrf
 
-                <h1 class="text-center font-bold">お問合せフォーム</h1>
+                <h1 class="text-center font-bold" style="color: #989898">お問合せフォーム</h1>
 
                 <div class="overflow-hidden sm:rounded-md">
                     <div class="px-2 sm:px-4 py-5 sm:p-10">

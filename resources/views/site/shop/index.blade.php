@@ -13,9 +13,8 @@
                name="search_word"
                value="{{ $viewModel->getSearchWord() }}"
                class="p-searchList__searchForm__word"
-               placeholder="店名・エリア・キーワード" required>
-        <button onclick="location.href='/search'" type="submit" name="word_search"
-                class="p-searchList__searchForm__button">
+               placeholder="店名・エリア・キーワード">
+        <button type="submit" class="p-searchList__searchForm__button">
             検索
         </button>
     </form>

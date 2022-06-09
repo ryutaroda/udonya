@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\ShopController as SiteShopController;
 use App\Http\Controllers\Site\TopController as SiteTopController;
 use App\Http\Controllers\Site\InquiryController as SiteInquiryController;
+use App\Http\Controllers\Site\PageController;
 use App\Http\Controllers\Admin\InquiryController as AdminInquiryController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,10 @@ Route::name('site.')->group(function () {
     });
     Route::resource('inquiries', SiteInquiryController::class)
         ->only(['create', 'store']);
+    Route::controller(PageController::class)->prefix('pages')->name('pages.')->group(function () {
+        Route::get('/privacy-policy', 'privacyPolicy')->name('privacy_policy');
+        Route::get('/terms-of-service', 'termsOfService')->name('terms_of_service');
+    });
 });
 
 /**

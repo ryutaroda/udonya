@@ -16,8 +16,8 @@
             <input type="text" id="search-dropdown"
                    name="search_word"
                    class="p-searchList__searchForm__word"
-                   placeholder="店名・エリア・キーワード" required>
-            <button onclick="location.href='/search'" type="submit" name="word_search"
+                   placeholder="店名・エリア・キーワード">
+            <button type="submit" name="word_search"
                     class="p-searchList__searchForm__button">
                 検索
             </button>

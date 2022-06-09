@@ -6,7 +6,7 @@ namespace App\UseCase\Site\Shop\Index;
 class SiteShopIndexInputData
 {
     /** @var string */
-    private $searchWord;
+    private string $searchWord;
 
     /**
      * @param ?string $searchWord

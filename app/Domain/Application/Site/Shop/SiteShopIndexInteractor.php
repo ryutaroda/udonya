@@ -18,13 +18,11 @@ class SiteShopIndexInteractor implements SiteShopIndexUseCaseInterface
     {
         $searchWord = $input->getSearchWord();
         $shopsQuery = Shop::with('prefecture');
-        if (!$searchWord) {
-            $shopsQuery
-                ->where('name', 'like', "%" . $searchWord . "%")
-                ->orWhere('address1', 'like', "%" . $searchWord . "%")
-                ->orWhere('address2', 'like', "%" . $searchWord . "%")
-                ->orWhere('address3', 'like', "%" . $searchWord . "%");
-        }
+        $shopsQuery
+            ->where('name', 'like', "%" . $searchWord . "%")
+            ->orWhere('address1', 'like', "%" . $searchWord . "%")
+            ->orWhere('address2', 'like', "%" . $searchWord . "%")
+            ->orWhere('address3', 'like', "%" . $searchWord . "%");
         $shops = $shopsQuery->orderBy('id', 'asc')->paginate();
 
         return new SiteShopIndexOutputData(
