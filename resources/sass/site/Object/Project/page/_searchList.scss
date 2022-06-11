@@ -20,6 +20,8 @@
 
         // 検索フォーム：検索ボタン
         &__button {
+            display: flex;
+            justify-content: center;
             font-size: 16px;
             font-weight: 700;
             line-height: 1.8;
@@ -31,7 +33,7 @@
             border: none;
             border-radius: 8px;
             background: #ff8739;
-            display: block;
+            //display: block;
             cursor: pointer;
         }
     }

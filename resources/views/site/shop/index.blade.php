@@ -15,7 +15,11 @@
                class="p-searchList__searchForm__word"
                placeholder="店名・エリア・キーワード">
         <button type="submit" class="p-searchList__searchForm__button">
-            検索
+            <span class="flex justify-center">
+                <img src="{{ asset('image/search.svg') }}"
+                     style="height: 1.25rem;position: relative;top: 3px;right: 2px;" alt="検索アイコン">
+                検索
+            </span>
         </button>
     </form>
 
