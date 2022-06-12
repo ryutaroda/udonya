@@ -43,7 +43,7 @@ Route::name('site.')->group(function () {
 /**
  * 管理画面
  */
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin.access_limit'])->prefix('admin')->name('admin.')->group(function () {
     Route::controller(UserController::class)->name('user.')->group(function () {
         Route::get('/users', 'index')->name('index');
     });
