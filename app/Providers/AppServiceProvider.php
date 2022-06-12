@@ -47,6 +47,12 @@ class AppServiceProvider extends ServiceProvider
             \App\UseCase\Site\Shop\Show\SiteShopShowUseCaseInterface::class,
             \App\Domain\Application\Site\Shop\SiteShopShowInteractor::class
         );
+
+        // MyPage.MyPageController.Top
+        $this->app->bind(
+            \App\UseCase\Site\MyPage\TopView\MyPageTopViewUseCaseInterface::class,
+            \App\Domain\Application\Site\MyPage\MyPageTopViewInteractor::class
+        );
     }
 
     private function registerRepositories()

@@ -7,7 +7,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         </h2>
     </x-slot>
-    <div class="px-5 c-topPage">
+    <div class="c-topPage">
         <div class="c-topPage__udon mb-5">
             <img src="{{ asset('image/noren_udon.png') }}" style="width: 200%" alt="店舗イメージ">
         </div>

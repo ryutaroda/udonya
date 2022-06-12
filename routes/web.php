@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\ShopMenuController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\ShopController as SiteShopController;
+use App\Http\Controllers\Site\MyPage\MyPageController;
 use App\Http\Controllers\Site\TopController as SiteTopController;
 use App\Http\Controllers\Site\InquiryController as SiteInquiryController;
 use App\Http\Controllers\Site\PageController;
@@ -31,6 +32,10 @@ Route::name('site.')->group(function () {
     Route::controller(SiteShopController::class)->name('shop.')->group(function () {
         Route::get('/search', 'index')->name('index');
         Route::get('/udons/{shop}', 'show')->name('show');
+    });
+    Route::controller(MyPageController::class)->name('mypage.')->group(function () {
+        Route::get('/mypage/{userId}', 'top')->name('top');
+        Route::get('/mypage/profile/edit', 'edit')->name('profile.edit');
     });
     Route::resource('inquiries', SiteInquiryController::class)
         ->only(['create', 'store']);

@@ -20,7 +20,7 @@
                         <a href="/" class="block py-2 pr-4 pl-3 border-b text-white">Top</a>
                     </li>
                     <li>
-                        <a href="/mypage" class="block py-2 pr-4 pl-3 border-b text-white">マイページ</a>
+                        <a href="{{ route('site.mypage.top', \Illuminate\Support\Facades\Auth::id()) }}" class="block py-2 pr-4 pl-3 border-b text-white">マイページ</a>
                     </li>
                     <li>
                         <form id="" action="{{ route('logout') }}" method="POST" class="block pr-4 py-2 pl-3 border-b">

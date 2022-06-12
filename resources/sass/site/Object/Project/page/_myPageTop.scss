@@ -1,0 +1,104 @@
+.p-myPageTop {
+    &__header {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    &__headerCreatedAt {
+
+    }
+
+    &__headerSetting {
+        position: relative;
+
+        & > img {
+            height: 12px;
+            position: absolute;
+            top: 3px;
+            right: 27px;
+        }
+    }
+
+    &__user {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    &__userAvatar {
+        position: relative;
+        margin-top: 12px;
+        & > svg {
+            position: absolute;
+        }
+    }
+
+    &__userName {
+        display: flex;
+        vertical-align: baseline;
+        margin-top: 23px;
+        margin-left: 20px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    &__profile {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    &__profileTitle {
+        width: 150px;
+        color: #727272;
+    }
+
+    &__profileContent {
+
+    }
+
+    &__report {
+        position: relative;
+        border-radius: 12px;
+        background: rgba(255, 135, 57, 0.75);
+        box-sizing: border-box;
+        color: #fff;
+        width: 100%;
+        margin: 0 20px 20px 0;
+        padding: 10px 20px 0;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__reportTitle {
+        font-weight: bold;
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+
+    &__reportContent {
+        display: flex;
+
+    }
+
+    &__reportContentItem {
+        display: flex;
+        margin-right: 10px;
+        &__name {
+            font-size: 10px;
+        }
+        &__count {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        &__unit {
+            display: flex;
+            align-items: flex-end;
+            font-size: 10px;
+            padding-bottom: 5px;
+        }
+    }
+
+}
