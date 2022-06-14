@@ -43,18 +43,26 @@
 
     &__profile {
         display: flex;
-        justify-content: space-between;
+        flex-wrap: nowrap;
+        //justify-content: space-between;
         margin-bottom: 10px;
-        font-size: 14px;
+        font-size: 12px;
+        //line-height: 0.75;
     }
 
     &__profileTitle {
-        width: 150px;
+        width: 110px;
         color: #727272;
+        //line-height: 0.75;
     }
 
     &__profileContent {
-
+        //display:flex;
+        //justify-content:center;
+        //align-items:center;
+        width: calc(100% - 100px);
+        //white-space: pre-line;
+        //line-height: 0.75;
     }
 
     &__report {
@@ -64,7 +72,7 @@
         box-sizing: border-box;
         color: #fff;
         width: 100%;
-        margin: 0 20px 20px 0;
+        margin: 25px 20px 20px 0;
         padding: 10px 20px 0;
         font-size: 14px;
         display: flex;

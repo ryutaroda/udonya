@@ -3,6 +3,7 @@
 namespace App\Http\ViewModels\Site\MyPage;
 
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Support\Facades\Auth;
 
 class EditViewModel
@@ -13,6 +14,8 @@ class EditViewModel
     private string $userName;
     /** @var string  */
     private string $userCreatedAt;
+    /** @var UserProfile  */
+    private UserProfile $userProfile;
 
     /**
      * @param User $user
@@ -22,6 +25,7 @@ class EditViewModel
         $this->user = $user;
         $this->userName = $user->name;
         $this->userCreatedAt = $user->created_at->format('Y.m.d');
+        $this->userProfile = $user->user_profile;
     }
 
     /**
@@ -30,6 +34,14 @@ class EditViewModel
     public function getUser(): User
     {
         return $this->user;
+    }
+
+    /**
+     * @return UserProfile
+     */
+    public function getUserProfile(): mixed
+    {
+        return $this->userProfile;
     }
 
     /**

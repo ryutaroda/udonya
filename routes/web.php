@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ShopMenuController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\ShopController as SiteShopController;
 use App\Http\Controllers\Site\MyPage\MyPageController;
+use App\Http\Controllers\Site\MyPage\UserProfileController as UserProfileControllerForMyPage;
 use App\Http\Controllers\Site\TopController as SiteTopController;
 use App\Http\Controllers\Site\InquiryController as SiteInquiryController;
 use App\Http\Controllers\Site\PageController;
@@ -35,7 +36,10 @@ Route::name('site.')->group(function () {
     });
     Route::controller(MyPageController::class)->name('mypage.')->group(function () {
         Route::get('/mypage/{userId}', 'top')->name('top');
+    });
+    Route::controller(UserProfileControllerForMyPage::class)->name('mypage.')->group(function () {
         Route::get('/mypage/profile/edit', 'edit')->name('profile.edit');
+        Route::post('/mypage/profile/update', 'update')->name('profile.update');
     });
     Route::resource('inquiries', SiteInquiryController::class)
         ->only(['create', 'store']);

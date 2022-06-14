@@ -3,6 +3,7 @@
 namespace App\Http\ViewModels\Site\MyPage;
 
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Support\Facades\Auth;
 
 class TopViewModel
@@ -13,6 +14,8 @@ class TopViewModel
     private string $userName;
     /** @var string  */
     private string $userCreatedAt;
+    /** @var UserProfile  */
+    private UserProfile $userProfile;
 
     /**
      * @param User $user
@@ -22,6 +25,15 @@ class TopViewModel
         $this->user = $user;
         $this->userName = $user->name;
         $this->userCreatedAt = $user->created_at->format('Y.m.d');
+        $this->userProfile = $user->user_profile;
+    }
+
+    /**
+     * @return UserProfile
+     */
+    public function getUserProfile(): mixed
+    {
+        return $this->userProfile;
     }
 
     /**

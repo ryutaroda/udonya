@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site\Auth;
 use App\Enums\UserRoles;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserProfile;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -45,6 +46,10 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => UserRoles::USER
+        ]);
+
+        UserProfile::create([
+            'user_id' => $user->id
         ]);
 
         event(new Registered($user));

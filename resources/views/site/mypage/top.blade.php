@@ -37,6 +37,7 @@
                 好きなうどん屋
             </div>
             <div class="p-myPageTop__profileContent">
+                {{ $viewModel->getUserProfile()->like_shops }}
             </div>
         </div>
         <div class="p-myPageTop__profile">
@@ -44,6 +45,7 @@
                 行きつけのお店
             </div>
             <div class="p-myPageTop__profileContent">
+                {{ $viewModel->getUserProfile()->many_times_shops }}
             </div>
         </div>
         <div class="p-myPageTop__profile">
@@ -51,6 +53,7 @@
                 プロフィール
             </div>
             <div class="p-myPageTop__profileContent">
+                {{ $viewModel->getUserProfile()->profile }}
             </div>
         </div>
         <div class="p-myPageTop__profile">
@@ -58,6 +61,7 @@
                 リンク
             </div>
             <div class="p-myPageTop__profileContent">
+                {{ $viewModel->getUserProfile()->url }}
             </div>
         </div>
 

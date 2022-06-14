@@ -19,14 +19,14 @@
                                 @include('components.form.label', ['name' => 'メールアドレス', 'required' => true])
                                 @include('components.form.create.input', ['name' => 'email'])
                             </div>
-                            <div class="col-span-6 sm:col-span-2">
+                            <div class="col-span-6 sm:col-span-2 hidden md:block">
                             </div>
 
                             <div class="col-span-6 sm:col-span-4">
                                 @include('components.form.label', ['name' => 'お名前', 'required' => true])
                                 @include('components.form.create.input', ['name' => 'name'])
                             </div>
-                            <div class="col-span-6 sm:col-span-2">
+                            <div class="col-span-6 sm:col-span-2 hidden md:block">
                             </div>
 
                             <div class="col-span-6 sm:col-span-6 lg:col-span-2 border-t border-gray-100 pt-2">
@@ -38,7 +38,7 @@
                                 @include('components.form.label', ['name' => 'お問い合わせ内容詳細', 'required' => true])
                                 @include('components.form.create.textarea', ['name' => 'contents'])
                             </div>
-                            <div class="col-span-6 sm:col-span-2">
+                            <div class="col-span-6 sm:col-span-2 hidden md:block">
                             </div>
 
                         </div>
