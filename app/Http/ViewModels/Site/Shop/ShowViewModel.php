@@ -2,6 +2,7 @@
 
 namespace App\Http\ViewModels\Site\Shop;
 
+use App\Constants\CommonConst;
 use App\Models\Shop;
 use App\Models\ShopMenu;
 use Illuminate\Database\Eloquent\Collection;
@@ -9,9 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ShowViewModel
 {
-    /** @var string  */
-    const NO_IMAGE_PATH = '/image/no_image01.jpeg';
-
     /** @var Shop  */
     private Shop $shop;
     /** @var Collection */
@@ -52,10 +50,10 @@ class ShowViewModel
             if (Storage::exists($this->shop->shop_image_path)) {
                 return Storage::url($this->shop->shop_image_path);
             } else {
-                return config('app.url').$this::NO_IMAGE_PATH;
+                return config('app.url').CommonConst::NO_IMAGE_PATH;
             }
         } else {
-            return config('app.url').$this::NO_IMAGE_PATH;
+            return config('app.url').CommonConst::NO_IMAGE_PATH;
         }
     }
 
@@ -68,10 +66,10 @@ class ShowViewModel
             if (Storage::exists($this->shop->menu_image_path)) {
                 return Storage::url($this->shop->menu_image_path);
             } else {
-                return config('app.url').$this::NO_IMAGE_PATH;
+                return config('app.url').CommonConst::NO_IMAGE_PATH;
             }
         } else {
-            return config('app.url').$this::NO_IMAGE_PATH;
+            return config('app.url').CommonConst::NO_IMAGE_PATH;
         }
     }
 
@@ -81,10 +79,10 @@ class ShowViewModel
             if (Storage::exists($menu->image_path)) {
                 return Storage::url($menu->image_path);
             } else {
-                return config('app.url').$this::NO_IMAGE_PATH;
+                return config('app.url').CommonConst::NO_IMAGE_PATH;
             }
         } else {
-            return config('app.url').$this::NO_IMAGE_PATH;
+            return config('app.url').CommonConst::NO_IMAGE_PATH;
         }
     }
 }
