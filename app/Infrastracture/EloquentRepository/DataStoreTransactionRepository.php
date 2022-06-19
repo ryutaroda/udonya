@@ -14,7 +14,7 @@ class DataStoreTransactionRepository implements DataStoreTransactionInterface
      * @return mixed
      * @throws Exception
      */
-    public function start(Closure $function)
+    public function start(Closure $function): mixed
     {
         DB::beginTransaction();
         try {

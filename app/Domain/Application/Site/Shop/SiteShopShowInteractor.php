@@ -15,7 +15,7 @@ class SiteShopShowInteractor implements SiteShopShowUseCaseInterface
      */
     public function invoke(SiteShopShowInputData $input): SiteShopShowOutputData
     {
-        $shopMenuList = ShopMenu::where('shop_id', $input->getShop())->get();
+        $shopMenuList = ShopMenu::where('shop_id', $input->getShop()->id)->get();
         return new SiteShopShowOutputData(
             $input->getShop(),
             $shopMenuList

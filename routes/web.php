@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\ShopMenuController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\ShopController as SiteShopController;
+use App\Http\Controllers\Site\ShopEatReportController;
 use App\Http\Controllers\Site\MyPage\MyPageController;
 use App\Http\Controllers\Site\MyPage\UserProfileController as UserProfileControllerForMyPage;
 use App\Http\Controllers\Site\TopController as SiteTopController;
@@ -33,6 +34,14 @@ Route::name('site.')->group(function () {
     Route::controller(SiteShopController::class)->name('shop.')->group(function () {
         Route::get('/search', 'index')->name('index');
         Route::get('/udons/{shop}', 'show')->name('show');
+    });
+    Route::controller(ShopEatReportController::class)->name('shop.eat.')->group(function () {
+        Route::get('/udons/{shop}/eat', 'index')->name('index');
+        Route::middleware(['auth'])->group(function () {
+            Route::get('/udons/{shop}/eat/create', 'create')->name('create');
+            Route::post('/udons/{shop}/eat', 'store')->name('store');
+        });
+
     });
     Route::controller(MyPageController::class)->name('mypage.')->group(function () {
         Route::get('/mypage/{userId}', 'top')->name('top');

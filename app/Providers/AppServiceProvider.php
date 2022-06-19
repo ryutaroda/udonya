@@ -37,15 +37,35 @@ class AppServiceProvider extends ServiceProvider
             \App\UseCase\Site\Top\Top\SiteTopTopUseCaseInterface::class,
             \App\Domain\Application\Site\Top\SiteTopTopInteractor::class
         );
+
         // Site.ShopController.Index
         $this->app->bind(
             \App\UseCase\Site\Shop\Index\SiteShopIndexUseCaseInterface::class,
             \App\Domain\Application\Site\Shop\SiteShopIndexInteractor::class
         );
+
         // Site.ShopController.Show
         $this->app->bind(
             \App\UseCase\Site\Shop\Show\SiteShopShowUseCaseInterface::class,
             \App\Domain\Application\Site\Shop\SiteShopShowInteractor::class
+        );
+
+        // Site.ShopEatReportController.Index
+        $this->app->bind(
+            \App\UseCase\Site\Shop\EatReport\Index\SiteShopEatReportIndexUseCaseInterface::class,
+            \App\Domain\Application\Site\Shop\SiteShopEatReportIndexInteractor::class
+        );
+
+        // Site.ShopEatReportController.Create
+        $this->app->bind(
+            \App\UseCase\Site\Shop\EatReport\Create\SiteShopEatReportCreateUseCaseInterface::class,
+            \App\Domain\Application\Site\Shop\SiteShopEatReportCreateInteractor::class
+        );
+
+        // Site.ShopEatReportController.Store
+        $this->app->bind(
+            \App\UseCase\Site\Shop\EatReport\Store\SiteShopEatReportStoreUseCaseInterface::class,
+            \App\Domain\Application\Site\Shop\SiteShopEatReportStoreInteractor::class
         );
 
         // MyPage.MyPageController.Top
