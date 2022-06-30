@@ -9,7 +9,7 @@
     </x-slot>
 
     <div class="p-myPageTop">
-        <h2 class="font-bold" style="color: #989898;font-size: 20px;">プロフィール</h2>
+        <h2 class="font-bold" style="color: #989898;font-size: 20px;">プロフィール </h2>
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="mt-5 md:mt-0 md:col-span-3">
                 <form action="{{ route('site.mypage.profile.update') }}" method="POST" enctype="multipart/form-data">
