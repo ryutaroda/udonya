@@ -16,12 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(1)->create();
-        UserProfile::create([
-            'user_id' => 1,
-        ]);
+//        User::factory(1)->create();
+//        UserProfile::create([
+//            'user_id' => 1,
+//        ]);
 
         $this->call([
+            UsersSeeder::class,
             RegionsSeeder::class,
             PrefecturesSeeder::class,
             ShopsSeeder::class,
