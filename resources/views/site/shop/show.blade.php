@@ -87,7 +87,7 @@
             </div>
         </div>
 
-       @include('components.parts.maps')
+       @include('components.parts.maps', ['address' => $viewModel->getMapAddress()])
 
     </div>
 
