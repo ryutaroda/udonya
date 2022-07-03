@@ -87,6 +87,8 @@
             </div>
         </div>
 
+       @include('components.parts.maps')
+
     </div>
 
 
