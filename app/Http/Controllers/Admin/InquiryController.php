@@ -9,13 +9,12 @@ use Illuminate\Http\Request;
 class InquiryController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        //
+        $inquiries = Inquiry::all();
+        return view('admin.inquiry.index')->with(compact('inquiries'));
     }
 
     /**
