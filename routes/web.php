@@ -37,7 +37,7 @@ Route::name('site.')->group(function () {
     });
     Route::controller(ShopEatReportController::class)->name('shop.eat.')->group(function () {
         Route::get('/udons/{shop}/eat', 'index')->name('index');
-        Route::middleware(['auth'])->group(function () {
+        Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/udons/{shop}/eat/create', 'create')->name('create');
             Route::post('/udons/{shop}/eat', 'store')->name('store');
         });
@@ -46,7 +46,7 @@ Route::name('site.')->group(function () {
     Route::controller(MyPageController::class)->name('mypage.')->group(function () {
         Route::get('/mypage/{userId}', 'top')->name('top');
     });
-    Route::controller(UserProfileControllerForMyPage::class)->name('mypage.')->group(function () {
+    Route::controller(UserProfileControllerForMyPage::class)->middleware(['auth', 'verified'])->name('mypage.')->group(function () {
         Route::get('/mypage/profile/edit', 'edit')->name('profile.edit');
         Route::post('/mypage/profile/update', 'update')->name('profile.update');
     });
