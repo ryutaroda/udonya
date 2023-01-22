@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('shop_menus', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('shop_id')->comment('店舗ID')->constrained()->cascadeOnDelete();
+            $table->foreignId('shop_id')->comment('p')->constrained()->cascadeOnDelete();
             $table->string('name')->comment('商品名');
             $table->string('price')->nullable()->comment('値段');
             $table->string('image_path')->comment('イメージパス');
